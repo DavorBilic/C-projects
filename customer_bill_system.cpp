@@ -5,11 +5,11 @@
 /************************************************************************************************
 							CUSTOMER BILLING SYSTEM
 ************************************************************************************************/
-/*	THIS PROGRAM CONTAINS BILLING SYSTEM FOR RESTAURANT		AUTOR: DAVOR BILIC	   */
+/*	THIS PROGRAM CONTAINS BILLING SYSTEM FOR RESTAURANT		AUTOR: DAVOR BILIC	*/
 
 
 void question_form(int* pick){
-	int temp;													// temporary variable which will store 
+	int temp;							// temporary variable which will store 
 	printf("Are you a guest or restaurant employee ? \n");		// value of function argument (pointer)
 	printf("1. Guest		2. Employee \n");
 	scanf("%d", &temp);
@@ -46,7 +46,7 @@ void ordering(){
 	char m;
 	static double price = 0;
 	
-jump1:											// section for ordering from menu
+jump1:										// section for ordering from menu
 	printf("\n");
 	printf("Pick an item that you want order (press number 1 - 15) : ");
 	scanf("%d", &item);
@@ -56,13 +56,13 @@ jump1:											// section for ordering from menu
 		printf("Thank you and goodbye !! \n");
 		exit(1);
 	}
-	else if(item < 0 && item > 15){				// if case for typing not allowed value
+	else if(item < 0 && item > 15){						// if case for typing not allowed value
 		printf("You typed wrong value ! \n");
 		exit(1);
 	}
 	
-	printf("Pick amount of that item : ");		// when the right item is finally picked, user must choose
-	scanf("%d", &amount);						// amount of that item
+	printf("Pick amount of that item : ");					// when the right item is finally picked, user must choose
+	scanf("%d", &amount);							// amount of that item
 	
 	// LIST OF ITEMS MULTIPLYING WITH PRICE TO GET FINAL PRICE
 	if(item == 1){
@@ -97,12 +97,12 @@ jump1:											// section for ordering from menu
 	}
 	
 	printf("\n");	
-	printf("Do you want something else ? \n");		// once user has picked item and its amount, he/she is asked does he/she
+	printf("Do you want something else ? \n");			// once user has picked item and its amount, he/she is asked does he/she
 	printf("a) YES   b) NO \n");					// want another item
 	scanf("%s", &m);
 	
 	switch(m){
-		case 'a':									// if user wants another item, program goes to jump section above this
+		case 'a':						// if user wants another item, program goes to jump section above this
 			goto jump1;
 			break;
 			
@@ -118,17 +118,17 @@ jump1:											// section for ordering from menu
 	printf("Your price is : %.2lf euro. \n", price);
 }
 void password(){
-	char pwd[] = {"iamtheemployee123"};			// setting the password
+	char pwd[] = {"iamtheemployee123"};						// setting the password
 	char pwd_try[20];
 	int res;
-	int count = 0;						// variable which counts number of password attempts 
+	int count = 0;									// variable which counts number of password attempts 
 
 jump2:											// section for password
 	printf("PASSWORD: \n");
-	scanf("%s", &pwd_try);						// scanning the password from the keyboard
+	scanf("%s", &pwd_try);								// scanning the password from the keyboard
 
-	res = strcmp(pwd, pwd_try);					// function to compare two strings... if strings are equal it will return zero
-												// otherwise it will return non-zero value
+	res = strcmp(pwd, pwd_try);							// function to compare two strings... if strings are equal it will return zero
+											// otherwise it will return non-zero value
 	if(res == 0){
 		printf("CORRECT PASSWORD !! \n");
 	} 
@@ -141,7 +141,7 @@ jump2:											// section for password
 		if(count == 3){
 			printf("\n");
 			printf("You have entered the wrong password 3 times, so the program has been terminated !! \n");
-			exit(1);								// if user write password 3 times incorrect, the program terminates
+			exit(1);							// if user write password 3 times incorrect, the program terminates
 		}
 		printf("Try again !! \n");
 		printf("\n");
@@ -154,14 +154,14 @@ void guest_database(){
 	FILE* fp;
 	
 
-	fp = fopen("user_base.txt", "a");					// opening the file
+	fp = fopen("user_base.txt", "a");						// opening the file
 		
 	if(fp == NULL) {			
-		printf("Error opening file !! \n");				// checking if there is error	
+		printf("Error opening file !! \n");					// checking if there is error	
 		exit(1);
 		}
 	
-	fflush(stdin);										// clearing the buffer			
+	fflush(stdin);									// clearing the buffer			
 	
 	printf("\n");	
 	printf("Insert first name: \n");
@@ -173,32 +173,32 @@ void guest_database(){
 	printf("Insert the last amount paid: \n");
 	scanf("%lf", &pr);
 		
-	fprintf(fp, "	CUSTOMER \n");						// writing in the file	
-	fprintf(fp, "---------------------- \n");			// writing in the file
-	fprintf(fp, "First name: %s \n", fn);				// writing in the file				
-	fprintf(fp, "Last name:	%s \n", ln);				// writing in the file
-	fprintf(fp, "Phone number: %s \n", pn);				// writing in the file		
-	fprintf(fp, "Amount of debt: %.2lf euro\n", pr);	// writing in the file
-	fprintf(fp, "\n");									// writing in the file
+	fprintf(fp, "	CUSTOMER \n");							// writing in the file	
+	fprintf(fp, "---------------------- \n");			
+	fprintf(fp, "First name: %s \n", fn);						
+	fprintf(fp, "Last name:	%s \n", ln);				
+	fprintf(fp, "Phone number: %s \n", pn);						
+	fprintf(fp, "Amount of debt: %.2lf euro\n", pr);	
+	fprintf(fp, "\n");									
 	
-	fclose(fp);											// closing the file	
+	fclose(fp);									// closing the file	
 }
 
 int main(){
 	int a;									// value whose address will be send to function question_form
 	
 	system("cls");							// clearing the screeen
-	question_form(&a);						// calling a function for picking guest/employee form
+	question_form(&a);						
 	
 	if(a == 1){
-		system("cls");						// clearing the screeen
-		menu_list();						// calling a function for menu list
-		ordering();							// calling a function for ordering	
+		system("cls");						
+		menu_list();						
+		ordering();							
 	}
 	else if(a == 2){
-		system("cls");						// clearing the screeen
-		password();							// calling a function for password
-		guest_database();					// calling a function for writing in data file
+		system("cls");						
+		password();							
+		guest_database();					
 	}
 	else{
 		printf("You typed the wrong value ! \n");
