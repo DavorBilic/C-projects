@@ -3,12 +3,12 @@
 #include <stdlib.h>
 
 /*****************************************************************************************************/
-								/* UNIT CONVERTER */ 
+					/* UNIT CONVERTER */ 
 /******************************************************************************************************
 THIS PROGRAM CONTAINS A SIMPLE UNIT CONVERTER. YOU CAN PUT THE VALUE REPRESENTED IN ONE UNIT, AND 
 CONVERT IT IN ANOTHER UNIT. UNITS IN THIS PROGRAM ARE: DISTANCE, TEMPERATURE AND MASS
 ******************************************************************************************************/
-/*																AUTOR: DAVOR BILIC			*/
+/*									AUTOR: DAVOR BILIC		*/
 
 void distance() {
 	int a;
@@ -23,16 +23,16 @@ void distance() {
 	switch(a){
 		case 1:
 			printf("How much miles you want to convert ? \n");
-			scanf("%lf", &b);											// scanning the value to convert
-			mile_res = b * 1.609344;									// 1 mile = 1.609344 km
+			scanf("%lf", &b);									// scanning the value to convert
+			mile_res = b * 1.609344;								// 1 mile = 1.609344 km
 			printf("%.3lf miles is %.3lf kilometers \n", b, mile_res);		
 			break;
 			
 		case 2:
 			printf("How much kilometers you want to convert ? \n");
-			scanf("%lf", &b);											// scanning the value to convert
-			km_res = b / 1.609344;									// 1 mile = 1.609344 km
-			printf("%.3lf kilometers is %.3lf miles \n", b, km_res);		// printing the values
+			scanf("%lf", &b);											
+			km_res = b / 1.609344;								
+			printf("%.3lf kilometers is %.3lf miles \n", b, km_res);		
 			break;
 			
 		default:
@@ -44,7 +44,7 @@ void temperature(){
 	int c, d;
 	double e, res11, res12, res13, res14;
 	
-	system("cls");						// clearing the screen content
+	system("cls");											// clearing the screen content
 	
 	printf("Choose unit which you want to convert: \n");
 	printf("1. Celsius \n");
