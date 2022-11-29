@@ -3,47 +3,47 @@
 #include<time.h>
 
 /*************************************************************************************************************************************
-	SLJEDEÆI PROGRAM ÈINI JEDNOSTAVAN KVIZ... NA POÈETKU KVIZA NA POTEZU JE PRVI IGRAÈ, TE ON DOBIJA PET PITANJA REDOM...
-   POMOÆU KONZOLE ODGOVARA NA SVAKO PITANJE, A TOÈNOST PITANJA SE PROVJERAVA... NAKON TOGA JE NA POTEZU DRUGI IGRAÈ ZA 
-   KOJEGA VRIJEDI ISTO... PO ZAVRŠETKU KVIZA NA EKRAN SE ISPISUJE BROJ TOÈNIH ODGOVORA OBA IGRAÈA, TE KOJI IGRAÈ JE POBJEDIO... 
-   POMOÆU RANDOM NUMBER GENERATORA GENERIRA SE BROJ OD 1 DO 20 NA OSNOVU KOJEGA SE BIRA JEDNO PITANJE IZ BAZE 
+	SLJEDEÄ†I PROGRAM ÄŒINI JEDNOSTAVAN KVIZ... NA POÄŒETKU KVIZA NA POTEZU JE PRVI IGRAÄŒ, TE ON DOBIJA PET PITANJA REDOM...
+   POMOÄ†U KONZOLE ODGOVARA NA SVAKO PITANJE, A TOÄŒNOST PITANJA SE PROVJERAVA... NAKON TOGA JE NA POTEZU DRUGI IGRAÄŒ ZA 
+   KOJEGA VRIJEDI ISTO... PO ZAVRÅ ETKU KVIZA NA EKRAN SE ISPISUJE BROJ TOÄŒNIH ODGOVORA OBA IGRAÄŒA, TE KOJI IGRAÄŒ JE POBJEDIO... 
+   POMOÄ†U RANDOM NUMBER GENERATORA GENERIRA SE BROJ OD 1 DO 20 NA OSNOVU KOJEGA SE BIRA JEDNO PITANJE IZ BAZE 
    (BROJ JE 1-20 JER JE 20 PITANJA U BAZI)... 
 **************************************************************************************************************************************/
 /*																										AUTOR: DAVOR BILIC			*/
    
 void pitanje_odgovor(int a);				// deklaracija funkcije za pitanje i odgovor
-void random_number(int* a);					// deklaracija funkcije random_number
+void random_number(int* a);				// deklaracija funkcije random_number
 void pobjeda(int* m, int* n);				// deklaracija funkcije za proglasenje pobjednika
 
-static int brojac = 0;						// deklaracija i inicijalizacija brojaca za tocne odgovore na nulu
+static int brojac = 0;						
 
 int main(){
-	int rnd_broj, i, j, prvi, drugi;		// deklaracija varijabli
+	int rnd_broj, i, j, prvi, drugi;		
 	
 	printf("Prvi igrac je na potezu: \n \n");
 	for(i = 0; i < 5; i++){
-		random_number(&rnd_broj);			// slanje adrese u funkciju, na adresi varijable rnd_broj, sprema se sluèajni broj od 1 do 20
-		pitanje_odgovor(rnd_broj);			// slanje random broja koji je dobiven u funkciju kako bi se dobilo random pitanje
-		system("pause");					// pauza sustava radi bolje preglednosti
+		random_number(&rnd_broj);			
+		pitanje_odgovor(rnd_broj);			
+		system("pause");			// pauza sustava radi bolje preglednosti
 	}
 	
-	prvi = brojac;				// vrijednost brojaca (tocnih odgovora) spremamo u varijablu m koji postaje brojac tocnih odgovora prvog igraca
+	prvi = brojac;				// vrijednost brojaca (tocnih odgovora) spremamo u varijablu prvi koji postaje brojac tocnih odgovora prvog igraca
 	
 	
 	printf("Drugi igrac je na potezu: \n \n");
 	for(j = 0; j < 5; j++){
-		random_number(&rnd_broj);			// slanje adrese u funkciju, na adresi varijable rnd_broj, sprema se sluèajni broj od 1 do 20
-		pitanje_odgovor(rnd_broj);			// slanje random broja koji je dobiven u funkciju kako bi se dobilo random pitanje
-		system("pause");					// pauza sustava radi bolje preglednosti
+		random_number(&rnd_broj);			
+		pitanje_odgovor(rnd_broj);			
+		system("pause");					
 	}
 	
-	drugi = brojac - prvi;					// brojac nastavlja brojati, pa mu zato oduzmemo broj m, kao da je poceo od broja m brojati
+	drugi = brojac - prvi;					// brojac nastavlja brojati, pa mu zato oduzmemo broj prvi, kao da je poceo od broja prvi brojati
 	
 	pobjeda(&prvi, &drugi);					// poziv funkcije za proglasenje pobjednika, slanje adresa brojaca prvi i drugi
 	
 }
 
-// funkcija koja kao argument prima random broj te na osnovu njega bira koje pitanje æe se postaviti igraèu
+// funkcija koja kao argument prima random broj te na osnovu njega bira koje pitanje Ä‡e se postaviti igraÄu
 // nakon toga igrac odgovara na pitanje koje se provjerava
 // ukoliko je tocno brojac se povecava za 1
 void pitanje_odgovor(int a){						
@@ -359,7 +359,7 @@ void random_number(int* a){
 }
 
 void pobjeda(int* m, int* n){
-	printf("Prvi igrac je imao %d tocnih odgovora. \n \n", *m);			// ispis broja tocnih odgovora na ekran (prvi)
+	printf("Prvi igrac je imao %d tocnih odgovora. \n \n", *m);		// ispis broja tocnih odgovora na ekran (prvi)
 	printf("Drugi igrac je imao %d tocnih odgovora. \n \n", *n);		// ispis broja tocnih odgovora na ekran	(drugi)
 	
 	if(*m > *n)
